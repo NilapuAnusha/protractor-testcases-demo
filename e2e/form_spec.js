@@ -7,10 +7,10 @@ describe('Attribute page', function() {
     browser.ignoreSynchronization = true;
     ptor = protractor.getInstance();
     //passing initial url
-    browser.get('http://localhost:9000/#/');
+    browser.get('http://localhost:9000/#/attribute');
     ptor.sleep(500);
     //expecting url
-    expect(browser.getCurrentUrl()).toContain('/');
+    expect(browser.getCurrentUrl()).toContain('/attribute');
     ptor.sleep(500);
   });
 
@@ -44,19 +44,19 @@ describe('Attribute page', function() {
       expect(element(by.css('.class2')).isDisplayed()).toBe(true);
     });
     it('expecting element count by repeater', function() {
-      expect(itemList.count()).toBe(4);
+      element.all(by.repeater('item in itemList'));
     });
     it('expecting element by text message', function() {
       expect(element(by.tagName('h5')).getText()).toContain("This is test example");      
     });
     it('expecting element by url', function() {
-      expect(browser.getCurrentUrl()).toContain('/');
+      expect(browser.getCurrentUrl()).toContain('/attribute');
     });
     it('get element by tag li', function() {
       element.all(by.repeater('item in itemList')).get(0);
     });
     it('get element by url', function() {
-      browser.get('http://localhost:9000/#/');
+      browser.get('http://localhost:9000/#/attribute');
     });
 
   });
